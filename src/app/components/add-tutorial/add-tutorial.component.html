@@ -27,7 +27,7 @@
       <div class="form-group">
         <label for="users">Select Users</label>
         <select multiple class="form-control" id="users" [(ngModel)]="selectedUsers" name="users">
-          <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+          <option *ngFor="let user of users" [value]="user.id">{{ user.username }}</option>
         </select>
       </div>
       
