@@ -13,6 +13,9 @@ export class TutorialsListComponent implements OnInit {
   currentTutorial: Tutorial = {};
   currentIndex = -1;
   title = '';
+  isPublished: boolean = false; // New property for published status
+  report: any = {};
+  searchReport: boolean = false;
 
   constructor(private tutorialService: TutorialService) { }
 
@@ -24,7 +27,7 @@ export class TutorialsListComponent implements OnInit {
     this.tutorialService.getAll()
       .subscribe({
         next: (data) => {
-          this.tutorials = data;
+          this.tutorials = data || []; // Ensure tutorials is an array even if data is undefined
           console.log(data);
         },
         error: (e) => console.error(e)
@@ -56,15 +59,29 @@ export class TutorialsListComponent implements OnInit {
   searchTitle(): void {
     this.currentTutorial = {};
     this.currentIndex = -1;
+    this.searchReport = true;
 
-    this.tutorialService.findByTitle(this.title)
+    if (this.isPublished) {
+      this.tutorialService.findByTitleAndPublished(this.title, this.isPublished)
+    .subscribe({
+      next: (response) => {
+        this.tutorials = response.tutorials;
+        this.report = response.report;
+        console.log(response);
+      },
+      error: (e) => console.error(e)
+    });
+    } else {
+      this.tutorialService.findByTitle(this.title)
       .subscribe({
-        next: (data) => {
-          this.tutorials = data;
-          console.log(data);
+        next: (response) => {
+          this.tutorials = response.tutorials;
+          this.report = response.report;
+          console.log(response);
         },
         error: (e) => console.error(e)
       });
+    }
   }
 
 }

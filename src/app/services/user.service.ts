@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://localhost:8080/api/users'; // Adjust this URL as needed
+  // private baseUrl = 'http://localhost:8080/api/users'; // Adjust this URL as needed
+  private baseUrl = 'https://backend-dot-neat-simplicity-415116.uc.r.appspot.com/api/users';
+
 
   constructor(private http: HttpClient) { }
 

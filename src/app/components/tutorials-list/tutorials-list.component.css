@@ -3,3 +3,26 @@
     max-width: 750px;
     margin: auto;
   }
+
+  .report {
+    max-width: 600px; /* Set a maximum width for the report area */
+    margin: 20px auto; /* Center the report horizontally */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light grey background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.report h5 {
+    color: #495057; /* Dark grey color for the heading */
+    border-bottom: 2px solid #007bff; /* Blue line under the heading */
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.report p {
+    font-size: 16px; /* Larger font size for better readability */
+    color: #343a40; /* Dark color for text */
+    margin-bottom: 10px; /* Space between paragraphs */
+}

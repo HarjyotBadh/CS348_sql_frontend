@@ -1,0 +1,29 @@
+runtime: nodejs18
+service: frontend
+
+handlers:
+  # Serve all static files within the browser subdirectory
+  - url: /(.*\.(gif|png|jpg|css|js|ico|json|svg|ttf|woff|woff2|otf|eot|html))$
+    static_files: dist/sql_frontend/browser/\1
+    upload: dist/sql_frontend/browser/(.*\.(gif|png|jpg|css|js|ico|json|svg|ttf|woff|woff2|otf|eot|html))$
+    secure: always  # Enforce HTTPS
+
+  # Serve the 3rdpartylicenses.txt file at the root level
+  - url: /3rdpartylicenses.txt
+    static_files: dist/sql_frontend/3rdpartylicenses.txt
+    upload: dist/sql_frontend/3rdpartylicenses.txt
+    secure: always  # Enforce HTTPS
+
+  # Serve index.html for all other requests
+  - url: /.*
+    static_files: dist/sql_frontend/browser/index.html
+    upload: dist/sql_frontend/browser/index.html
+    secure: always  # Enforce HTTPS
+
+automatic_scaling:
+  target_cpu_utilization: 0.6
+  min_instances: 1
+  max_instances: 5
+
+env_variables:
+  NODE_ENV: 'production'

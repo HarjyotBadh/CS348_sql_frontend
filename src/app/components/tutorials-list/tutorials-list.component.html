@@ -17,6 +17,23 @@
           </button>
         </div>
       </div>
+
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)]="isPublished"> Only show published
+        </label>
+      </div>
+
+      <div class="report" *ngIf="searchReport">
+        <h5>Search Report</h5>
+        <p>Total Tutorials: {{ report.total }}</p>
+        <p>Published Tutorials: {{ report.published }}</p>
+        <p>Total Students: {{ report.total_students }}</p>
+        <p>Average Students per Tutorial: {{ report.average_students.toFixed(2) }}</p>
+      </div>
+      
+
     </div>
     <div class="col-md-6">
       <h4>Tutorials List</h4>

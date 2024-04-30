@@ -122,7 +122,10 @@ export class TutorialDetailsComponent implements OnInit {
         console.log(res);
         this.router.navigate(['/tutorials']);
       },
-      error: (e) => console.error(e),
+      error: (e) => {
+        console.error(e);
+        this.router.navigate(['/tutorials']);
+      },
     });
   }
 
